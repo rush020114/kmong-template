@@ -4,7 +4,37 @@
 <!-- 해당 파일에 모든 쿼리문을 작성 -->
 <!-- namespace에는 xml파일과 연결할 Mapper interface 파일명을 패키지를 포함하여 적어주세요 -->
 <mapper namespace="mapper">
-	
+    <resultMap id="item" type="com.kmong.template.backend.domain.item.dto.ItemDTO">
+        <id     column="id"          property="id"/>
+        <result column="title"       property="title"/>
+        <result column="content"     property="content"/>
+        <result column="created_at"  property="createdAt"/>
+        <collection property="itemImageList" resultMap="itemImage"/>
+    </resultMap>
+
+    <resultMap id="itemImage" type="com.kmong.template.backend.domain.item.dto.ItemImageDTO">
+        <id     column="id"                 property="id"/>
+        <result column="origin_img_name"    property="originImgName"/>
+        <result column="attached_img_name"  property="attachedImgName"/>
+        <result column="is_main"            property="isMain"/>
+        <result column="item_id"            property="itemId"/>
+    </resultMap>
+
+    <insert id="regItem">
+        INSERT INTO items (
+            id
+            , title
+            , content
+            , created_at
+        ) VALUES (
+            #{id}
+            , #{title}
+            , #{content}
+            , #{createdAt}
+        )
+    </insert>
+
+
 </mapper>
 
 
