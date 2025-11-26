@@ -45,13 +45,5 @@ public class GlobalExceptionHandler {
     return ResponseEntity.badRequest().body(errors);
   }
 
-  // 그 외 모든 예외 (서버 오류)
-  @ExceptionHandler(Exception.class)
-  public ResponseEntity<String> handleException(Exception e) {
-    log.error("서버 오류 발생", e);
-    return ResponseEntity
-            .status(HttpStatus.INTERNAL_SERVER_ERROR)
-            .body("서버 오류가 발생했습니다");
-  }
 }
 

@@ -18,5 +18,8 @@ public interface ItemMapper {
   void regImages(List<ItemImageDTO> imageList);
 
   // 목록 조회
-  List<ItemDTO> get();
+  List<ItemDTO> getAll();
+
+  // 상세 조회
+  ItemDTO get(int id);
 }

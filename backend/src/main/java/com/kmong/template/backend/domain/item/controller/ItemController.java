@@ -38,10 +38,18 @@ public class ItemController {
   }
 
   // 목록 조회
-  @GetMapping
-  public ResponseEntity<List<ItemDTO>> get(){
+  @GetMapping("")
+  public ResponseEntity<List<ItemDTO>> getAll(){
     return ResponseEntity
             .status(HttpStatus.OK)
-            .body(itemService.get());
+            .body(itemService.getAll());
+  }
+
+  // 상세 조회
+  @GetMapping("/{id}")
+  public ResponseEntity<ItemDTO> get(@PathVariable("id") int id){
+    return ResponseEntity
+            .status(HttpStatus.OK)
+            .body(itemService.get(id));
   }
 }

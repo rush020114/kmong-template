@@ -67,7 +67,12 @@ public class ItemService {
   }
 
   // 목록 조회
-  public List<ItemDTO> get(){
-    return itemMapper.get();
+  public List<ItemDTO> getAll(){
+    return itemMapper.getAll();
+  }
+
+  // 상세 조회
+  public ItemDTO get(int id){
+    return itemMapper.get(id);
   }
 }

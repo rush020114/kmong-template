@@ -56,7 +56,7 @@
     </select>
 
     <!-- 조회 -->
-    <select id="get" resultMap="item">
+    <select id="getAll" resultMap="item">
         SELECT i.id
             , title
             , attached_img_name
@@ -67,4 +67,19 @@
         ORDER BY created_at DESC
     </select>
 
+    <!-- 상세 조회 -->
+    <select id="get" resultMap="item">
+        SELECT i.id
+            , i.title
+            , i.content
+            , i.created_at
+            , ii.image_id
+            , ii.origin_img_name
+            , ii.attached_img_name
+            , ii.is_main
+        FROM items i
+        LEFT JOIN item_images ii
+        ON i.id = ii.id
+        WHERE i.id = #{id}
+    </select>
 </mapper>
