@@ -12,5 +12,5 @@ public class ItemDTO {
   private String content;       // 상품 설명
   private LocalDateTime createdAt; // 등록일
 
-  private List<ItemImageDTO> itemImageList;
+  private List<ItemImageDTO> ImageList;
 }
