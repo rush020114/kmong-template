@@ -2,14 +2,18 @@ import React, { useState, useRef } from 'react'
 import itemApi from '../apis/itemApi';
 
 const ItemForm = () => {
+
+  // 정보를 담을 state 변수
   const [itemData, setItemData] = useState({ 
     title: '', 
     content: '' 
   });
+
+  // 이미지들을 담을 state 변수
   const [mainImage, setMainImage] = useState(null);
   const [subImages, setSubImages] = useState([]);
 
-  // ref 추가
+  // 선택된 이미지명을 초기화할 ref 
   const mainImageRef = useRef(null);
   const subImagesRef = useRef(null);
 

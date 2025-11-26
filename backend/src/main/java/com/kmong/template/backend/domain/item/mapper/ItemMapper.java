@@ -16,4 +16,7 @@ public interface ItemMapper {
 
   // 이미지 등록
   void regImages(List<ItemImageDTO> imageList);
+
+  // 목록 조회
+  List<ItemDTO> get();
 }

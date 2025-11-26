@@ -1,10 +1,14 @@
 package com.kmong.template.backend.domain.item.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ItemImageDTO {
   private int imageId;           // 상품 이미지 아이디
   private String originImgName;  // 원본 파일명

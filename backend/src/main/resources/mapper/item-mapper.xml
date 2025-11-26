@@ -5,10 +5,10 @@
 <!-- namespace에는 xml파일과 연결할 Mapper interface 파일명을 패키지를 포함하여 적어주세요 -->
 <mapper namespace="com.kmong.template.backend.domain.item.mapper.ItemMapper">
     <resultMap id="item" type="com.kmong.template.backend.domain.item.dto.ItemDTO">
-        <id     column="id"          property="id"/>
-        <result column="title"       property="title"/>
-        <result column="content"     property="content"/>
-        <result column="created_at"  property="createdAt"/>
+        <id         column="id"          property="id"/>
+        <result     column="title"       property="title"/>
+        <result     column="content"     property="content"/>
+        <result     column="created_at"  property="createdAt"/>
         <collection property="imageList" resultMap="itemImage"/>
     </resultMap>
 
@@ -53,6 +53,18 @@
     <select id="getNextId" resultType="int">
         SELECT COALESCE(MAX(id), 0) + 1
         FROM items;
+    </select>
+
+    <!-- 조회 -->
+    <select id="get" resultMap="item">
+        SELECT i.id
+            , title
+            , attached_img_name
+            , is_main
+        FROM items i
+        INNER JOIN item_images ii
+        ON i.id = ii.id
+        ORDER BY created_at DESC
     </select>
 
 </mapper>

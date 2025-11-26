@@ -14,3 +14,5 @@ CREATE TABLE item_images (
 	is_main CHAR(1) NOT NULL,                          -- 메인 여부(Y/N)
     id INT REFERENCES items(id) ON DELETE CASCADE
 );
+
+select * from item_images;

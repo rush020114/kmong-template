@@ -7,11 +7,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -36,5 +35,13 @@ public class ItemController {
     return ResponseEntity
             .status(HttpStatus.CREATED)
             .body("등록 완료");
+  }
+
+  // 목록 조회
+  @GetMapping
+  public ResponseEntity<List<ItemDTO>> get(){
+    return ResponseEntity
+            .status(HttpStatus.OK)
+            .body(itemService.get());
   }
 }

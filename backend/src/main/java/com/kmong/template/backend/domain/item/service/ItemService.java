@@ -65,4 +65,9 @@ public class ItemService {
     itemMapper.regImages(imageList);  // List 전달
     log.info("이미지 {} 개 저장 완료", imageList.size());
   }
+
+  // 목록 조회
+  public List<ItemDTO> get(){
+    return itemMapper.get();
+  }
 }
