@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import PopupMenu from '../components/PopupMenu'
 
 const Header = () => {
+  const [popupOpen, setPopupOpen] = useState(false)
+
   return (
     <header className="bg-white font-sans shadow-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -14,27 +17,20 @@ const Header = () => {
             KMONG
           </Link>
 
-          {/* 오른쪽 메뉴 */}
-          <nav className="flex items-center gap-6">
-            <Link 
-              to="/about" 
-              className="text-gray-600 hover:text-secondary transition-colors"
+          {/* 오른쪽: ⋮ 버튼 */}
+          <div className="relative">
+            <button 
+              onClick={() => setPopupOpen(!popupOpen)} 
+              className="text-2xl text-gray-600 cursor-pointer transition-colors"
+              aria-label="메뉴 열기"
             >
-              소개
-            </Link>
-            <Link 
-              to="/post" 
-              className="text-gray-600 hover:text-secondary transition-colors"
-            >
-              글쓰기
-            </Link>
-            <Link 
-              to="/contact" 
-              className="text-gray-600 hover:text-secondary transition-colors"
-            >
-              문의
-            </Link>
-          </nav>
+              ⋮
+            </button>
+
+            {popupOpen && (
+              <PopupMenu onClose={() => setPopupOpen(false)} />
+            )}
+          </div>
         </div>
       </div>
     </header>

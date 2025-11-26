@@ -11,3 +11,17 @@ export const axiosInstance = axios.create({
     "Content-Type": "application/json",
   },
 }); 
+
+// ✅ 요청 인터셉터: FormData 자동 감지
+axiosInstance.interceptors.request.use(
+    (config) => {
+        // FormData면 Content-Type 자동 변경
+        if (config.data instanceof FormData) {
+            config.headers['Content-Type'] = 'multipart/form-data';
+        }
+        return config;
+    },
+    (error) => {
+        return Promise.reject(error);
+    }
+);

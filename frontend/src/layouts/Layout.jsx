@@ -4,12 +4,12 @@ import Header from './Header';
 
 const Layout = () => {
   return (
-    <>
+    <div className="bg-gray-50 min-h-screen">
       <Header />
-      <div className="mt-4 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mt-4 mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <Outlet />
       </div>
-    </>
+    </div>
   );
 };
 

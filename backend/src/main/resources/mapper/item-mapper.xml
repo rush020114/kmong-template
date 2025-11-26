@@ -3,7 +3,7 @@
 
 <!-- 해당 파일에 모든 쿼리문을 작성 -->
 <!-- namespace에는 xml파일과 연결할 Mapper interface 파일명을 패키지를 포함하여 적어주세요 -->
-<mapper namespace="mapper">
+<mapper namespace="com.kmong.template.backend.domain.item.mapper.ItemMapper">
     <resultMap id="item" type="com.kmong.template.backend.domain.item.dto.ItemDTO">
         <id     column="id"          property="id"/>
         <result column="title"       property="title"/>
@@ -13,11 +13,11 @@
     </resultMap>
 
     <resultMap id="itemImage" type="com.kmong.template.backend.domain.item.dto.ItemImageDTO">
-        <id     column="image_id"             property="id"/>
+        <id     column="image_id"           property="imageId"/>
         <result column="origin_img_name"    property="originImgName"/>
         <result column="attached_img_name"  property="attachedImgName"/>
         <result column="is_main"            property="isMain"/>
-        <result column="item_id"            property="itemId"/>
+        <result column="id"                 property="id"/>
     </resultMap>
 
     <!-- 등록 -->
@@ -50,40 +50,9 @@
     </insert>
 
     <!-- 다음 id 조회 -->
-    <select id="getNextNum" resultType="int">
-        SELECT IFNULL(MAX(id), 0) + 1
+    <select id="getNextId" resultType="int">
+        SELECT COALESCE(MAX(id), 0) + 1
         FROM items;
     </select>
 
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,0 +1,27 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+
+const PopupMenu = ({ onClose }) => {
+  return (
+    <div className="absolute top-8 right-0 bg-white border border-gray-200 shadow-md rounded-md w-40 z-50 overflow-hidden">
+      <nav className="flex flex-col">
+        <Link 
+          to="/item-form" 
+          className="px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
+          onClick={onClose}
+        >
+          상품 등록
+        </Link>
+        <Link 
+          to="/about" 
+          className="px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
+          onClick={onClose}
+        >
+          소개
+        </Link>
+      </nav>
+    </div>
+  )
+}
+
+export default PopupMenu
