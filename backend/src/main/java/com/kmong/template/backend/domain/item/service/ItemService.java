@@ -75,4 +75,25 @@ public class ItemService {
   public ItemDTO get(int id){
     return itemMapper.get(id);
   }
+
+  // 삭제
+  @Transactional
+  public void delete(int id){
+    ItemDTO item = itemMapper.get(id);
+    if (item == null) {
+      throw new IllegalArgumentException("존재하지 않는 아이템입니다: " + id);
+    }
+
+    // 이미지 삭제
+    List<ItemImageDTO> imageList = item.getImageList();
+    if (imageList != null && !imageList.isEmpty()) {
+      List<String> attachedImgNameList = imageList.stream()
+              .map(ItemImageDTO::getAttachedImgName)
+              .toList();
+      fileUploadUtil.deleteFiles(attachedImgNameList, UploadPath.ITEM);
+    }
+
+    // 삭제
+    itemMapper.delete(id);
+  }
 }

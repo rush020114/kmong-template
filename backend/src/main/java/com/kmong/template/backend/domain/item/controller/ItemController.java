@@ -52,4 +52,13 @@ public class ItemController {
             .status(HttpStatus.OK)
             .body(itemService.get(id));
   }
+
+  // 삭제
+  @DeleteMapping("/{id}")
+  public ResponseEntity<String> delete(@PathVariable("id") int id){
+    itemService.delete(id);
+    return ResponseEntity
+            .status(HttpStatus.OK)
+            .body("삭제 완료");
+  }
 }

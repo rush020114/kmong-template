@@ -22,4 +22,7 @@ public interface ItemMapper {
 
   // 상세 조회
   ItemDTO get(int id);
+
+  // 삭제
+  void delete(int id);
 }

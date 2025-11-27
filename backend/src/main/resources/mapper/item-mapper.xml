@@ -26,12 +26,10 @@
             id
             , title
             , content
-            , created_at
         ) VALUES (
             #{id}
             , #{title}
             , #{content}
-            , #{createdAt}
         )
     </insert>
 
@@ -52,7 +50,7 @@
     <!-- 다음 id 조회 -->
     <select id="getNextId" resultType="int">
         SELECT COALESCE(MAX(id), 0) + 1
-        FROM items;
+        FROM items
     </select>
 
     <!-- 조회 -->
@@ -65,6 +63,7 @@
         INNER JOIN item_images ii
         ON i.id = ii.id
         ORDER BY created_at DESC
+            , CASE WHEN ii.is_main = 'Y' THEN 0 ELSE 1 END
     </select>
 
     <!-- 상세 조회 -->
@@ -82,4 +81,10 @@
         ON i.id = ii.id
         WHERE i.id = #{id}
     </select>
+
+    <!-- 삭제 -->
+    <delete id="delete">
+        DELETE FROM items
+        WHERE id = #{id}
+    </delete>
 </mapper>

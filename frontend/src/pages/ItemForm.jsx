@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import itemApi from '../apis/itemApi';
+import { handleError } from '../utils/errorHandler';
 
 const ItemForm = () => {
 
@@ -39,12 +40,7 @@ const ItemForm = () => {
       if (mainImageRef.current) mainImageRef.current.value = '';
       if (subImagesRef.current) subImagesRef.current.value = '';
     } catch (e) {
-      if (typeof e.response?.data === 'object') {
-        const messages = Object.values(e.response.data).join('\n');
-        alert(messages);
-      } else {
-        alert(e.response?.data || e.message);
-      }
+      handleError(e, true);
     }
   };
 
