@@ -87,4 +87,9 @@
         DELETE FROM items
         WHERE id = #{id}
     </delete>
+
+    <!-- 수정 -->
+    <update id="update">
+        
+    </update>
 </mapper>

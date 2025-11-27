@@ -4,6 +4,7 @@ import Layout from './layouts/Layout'
 import ItemForm from './pages/ItemForm'
 import ItemList from './pages/ItemList'
 import ItemDetail from './pages/ItemDetail'
+import ItemEdit from './pages/ItemEdit'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <Route path='' element={<ItemList />} />
         <Route path='item-form' element={<ItemForm />} />
         <Route path=':id' element={<ItemDetail />} />
+        <Route path='edit/:id' element={<ItemEdit />} />
       </Route>
     </Routes>
   )

@@ -30,7 +30,7 @@ const ItemDetail = () => {
   console.log(itemDetail)
 
   return (
-    <div className="w-full min-h-[calc(100vh-4rem)] flex flex-col gap-6">
+    <div className="w-full min-h-[calc(100vh-4rem)] flex flex-col gap-6 mb-4">
       {/* 상단: 제목/작성일 */}
       <header className="bg-white rounded-xl shadow p-6 flex justify-between items-center">
         {/* 왼쪽: 제목 + 작성일 */}
@@ -48,7 +48,7 @@ const ItemDetail = () => {
           <button
             className="hover:text-indigo-600 transition-colors"
             aria-label="수정"
-            onClick={() => console.log('수정 클릭')}
+            onClick={() => nav(`/edit/${id}`)}
           >
             <i className="bi bi-pencil-square text-xl"></i>
           </button>
