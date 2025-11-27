@@ -6,13 +6,13 @@ const Header = () => {
   const [popupOpen, setPopupOpen] = useState(false)
 
   return (
-    <header className="bg-white font-sans shadow-sm">
+    <header className="sticky top-0 z-50 bg-white shadow-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="h-16 flex items-center justify-between">
+        <div className="flex h-16 items-center justify-between">
           {/* 브랜드 */}
           <Link 
             to="/" 
-            className="text-xl font-bold text-gray-900 hover:text-yellow-500 transition-colors"
+            className="text-xl font-bold text-gray-900 transition-colors hover:text-blue-600"
           >
             KMONG
           </Link>
@@ -21,10 +21,10 @@ const Header = () => {
           <div className="relative">
             <button 
               onClick={() => setPopupOpen(!popupOpen)} 
-              className="text-2xl text-gray-600 cursor-pointer transition-colors"
+              className="flex h-10 w-10 items-center justify-center rounded-lg text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900"
               aria-label="메뉴 열기"
             >
-              ⋮
+              <span className="text-2xl leading-none">⋮</span>
             </button>
 
             {popupOpen && (

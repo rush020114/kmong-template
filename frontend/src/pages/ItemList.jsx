@@ -28,13 +28,15 @@ const ItemList = () => {
   console.log(itemList)
 
   return (
-    <div className="p-8">
+    <div>
       {itemList.length === 0 ? (
-        <div className="text-center text-gray-500 py-12 text-3xl">
-          목록을 등록해주세요!
+        <div className="flex min-h-[50vh] items-center justify-center rounded-lg bg-white">
+          <p className="text-lg text-gray-400">
+            목록을 등록해주세요!
+          </p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {itemList.map(item => (
             <ItemCard
               onClick={() => nav(`${item.id}`)}

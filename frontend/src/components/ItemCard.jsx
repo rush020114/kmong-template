@@ -3,23 +3,23 @@ import React from 'react';
 const ItemCard = ({ item, onClick }) => {
   return (
     <div
-      className="bg-white rounded-xl shadow hover:shadow-lg transition flex flex-col overflow-hidden cursor-pointer"
+      className="group cursor-pointer overflow-hidden rounded-lg bg-white shadow-sm transition-all hover:shadow-md"
       onClick={() => onClick()}
     >
       {/* 이미지 영역 */}
       {item.imageList?.length > 0 && (
-        <div className="relative w-full h-48 bg-gray-100 flex items-center justify-center">
+        <div className="aspect-square w-full overflow-hidden bg-gray-100">
           <img
             src={`${import.meta.env.VITE_API_URL}/uploads/item/${item.imageList[0].attachedImgName}`}
             alt={item.title}
-            className="max-h-full max-w-full object-contain p-2"
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
         </div>
       )}
 
       {/* 텍스트 영역 */}
-      <div className="p-4 flex-1 flex flex-col">
-        <h3 className="text-lg font-semibold text-gray-800 mb-2">
+      <div className="p-4">
+        <h3 className="line-clamp-2 text-base font-medium text-gray-900">
           {item.title}
         </h3>
         {/* 필요하다면 설명이나 가격 같은 추가 정보 */}
