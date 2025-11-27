@@ -90,6 +90,9 @@
 
     <!-- 수정 -->
     <update id="update">
-        
+        UPDATE items
+        SET title = #{title}
+            , content = #{content}
+        WHERE id = #{id}
     </update>
 </mapper>

@@ -27,7 +27,7 @@ public class ItemService {
    * @param subImages 메인 이미지 인덱스 (0부터 시작, null이면 첫 번째)
    * @param dto Item 정보
    */
-  @Transactional
+  @Transactional(rollbackFor = Exception.class)
   public void reg(MultipartFile mainImage, MultipartFile[] subImages, ItemDTO dto){
     // 1. 다음 ID 조회
     int nextId = itemMapper.getNextId();
@@ -77,7 +77,7 @@ public class ItemService {
   }
 
   // 삭제
-  @Transactional
+  @Transactional(rollbackFor = Exception.class)
   public void delete(int id){
     ItemDTO item = itemMapper.get(id);
     if (item == null) {
@@ -95,5 +95,11 @@ public class ItemService {
 
     // 삭제
     itemMapper.delete(id);
+  }
+
+  // 수정
+  @Transactional(rollbackFor = Exception.class)
+  public void update(ItemDTO dto){
+    itemMapper.update(dto);
   }
 }

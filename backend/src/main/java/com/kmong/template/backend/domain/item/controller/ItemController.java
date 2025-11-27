@@ -61,4 +61,17 @@ public class ItemController {
             .status(HttpStatus.OK)
             .body("삭제 완료");
   }
+
+  // 수정
+  @PutMapping("/{id}")
+  public ResponseEntity<String> update(
+          @PathVariable("id") int id,
+          @RequestBody ItemDTO dto
+  ){
+    dto.setId(id);
+    itemService.update(dto);
+    return ResponseEntity
+            .status(HttpStatus.OK)
+            .body("수정 완료");
+  }
 }

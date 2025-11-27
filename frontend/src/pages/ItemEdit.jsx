@@ -36,8 +36,8 @@ const ItemEdit = () => {
   // 수정 함수
   const handleSubmit = async () => {
     try {
-      await itemApi.update(id, updateItemData);
-      alert('수정 완료');
+      const res = await itemApi.update(id, updateItemData);
+      alert(res);
       nav(`/${id}`);
     } catch (e) {
       handleError(e, false);

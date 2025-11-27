@@ -12,7 +12,7 @@ public interface ItemMapper {
   int getNextId();
 
   // 등록
-  void reg(ItemDTO item);
+  void reg(ItemDTO dto);
 
   // 이미지 등록
   void regImages(List<ItemImageDTO> imageList);
@@ -25,4 +25,7 @@ public interface ItemMapper {
 
   // 삭제
   void delete(int id);
+
+  // 수정
+  void update(ItemDTO dto);
 }
