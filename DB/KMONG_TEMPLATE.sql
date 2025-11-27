@@ -15,4 +15,7 @@ CREATE TABLE item_images (
     id INT REFERENCES items(id) ON DELETE CASCADE
 );
 
+select * from items;
+
 select * from item_images;
+
