@@ -76,8 +76,8 @@ public class ItemController {
   }
 
   // 목록 삭제
-  @DeleteMapping("")
-  public ResponseEntity<String> deleteList(@RequestParam ItemDTO dto){
+  @PostMapping("/delete")
+  public ResponseEntity<String> deleteList(@RequestBody ItemDTO dto){
     int deleteCnt = itemService.deleteList(dto.getDeleteIdArr());
     return ResponseEntity
             .status(HttpStatus.OK)

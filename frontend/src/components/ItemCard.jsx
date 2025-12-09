@@ -1,11 +1,22 @@
 import React from 'react';
 
-const ItemCard = ({ item, onClick }) => {
+const ItemCard = ({ item, onClick, isDelete, checkedItems, checkItem }) => {
   return (
     <div
-      className="group cursor-pointer overflow-hidden rounded-lg bg-white shadow-sm transition-all hover:shadow-md"
+      className="group relative cursor-pointer overflow-hidden rounded-lg bg-white shadow-sm transition-all hover:shadow-md"
       onClick={() => onClick()}
     >
+      {isDelete && (
+        <div className="absolute left-3 top-3 z-10">
+          <input
+            type="checkbox"
+            value={item.id}
+            checked={checkedItems.includes(item.id)}
+            onChange={e => checkItem(e)}
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
       {/* 이미지 영역 */}
       {item.imageList?.length > 0 && (
         <div className="aspect-square w-full overflow-hidden bg-gray-100">

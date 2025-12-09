@@ -63,6 +63,16 @@ const itemApi = {
       const response = await axiosInstance.delete(`/items/${id}`);
       return response.data;
   },
+
+  /**
+   * Item 목록 삭제
+   * @param {*} idList 삭제할 목록 id
+   * @returns 삭제 개수 메시지
+   */
+  deleteList: async idList => {
+    const response = await axiosInstance.post('/items/delete', {deleteIdArr: idList})
+    return response.data;
+  },
 };
 
 export default itemApi;

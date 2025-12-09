@@ -21,10 +21,10 @@ const PopupMenu = ({ onClose }) => {
             상품 등록
           </Link>
           <Link 
-            className="px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
+            className="px-4 py-2 text-red-700 hover:bg-gray-100 transition-colors"
             onClick={onClose}
           >
-            소개
+            삭제
           </Link>
         </nav>
       </div>
