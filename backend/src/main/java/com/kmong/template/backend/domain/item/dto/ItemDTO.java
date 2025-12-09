@@ -18,5 +18,7 @@ public class ItemDTO {
   private String content;       // 상품 설명
   private LocalDateTime createdAt; // 등록일
 
-  private List<ItemImageDTO> imageList;
+  private List<ItemImageDTO> imageList; // 상품 이미지 목록
+
+  private int[] deleteIdArr; // 상품 목록 삭제 아이디
 }

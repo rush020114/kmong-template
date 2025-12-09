@@ -102,4 +102,9 @@ public class ItemService {
   public void update(ItemDTO dto){
     itemMapper.update(dto);
   }
+  
+  // 목록 삭제
+  public int deleteList(int[] deleteIdArr){
+    return itemMapper.deleteList(deleteIdArr);
+  }
 }

@@ -74,4 +74,13 @@ public class ItemController {
             .status(HttpStatus.OK)
             .body("수정 완료");
   }
+
+  // 목록 삭제
+  @DeleteMapping("")
+  public ResponseEntity<String> deleteList(@RequestParam ItemDTO dto){
+    int deleteCnt = itemService.deleteList(dto.getDeleteIdArr());
+    return ResponseEntity
+            .status(HttpStatus.OK)
+            .body(deleteCnt + "개 삭제 완료");
+  }
 }

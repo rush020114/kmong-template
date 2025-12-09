@@ -95,4 +95,13 @@
             , content = #{content}
         WHERE id = #{id}
     </update>
+
+    <!-- 목록 삭제 -->
+    <delete id="deleteList">
+        DELETE FROM items
+        WHERE id IN
+        <foreach collection="deleteIdArr" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
 </mapper>

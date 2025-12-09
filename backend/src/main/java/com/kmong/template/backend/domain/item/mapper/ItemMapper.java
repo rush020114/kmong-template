@@ -28,4 +28,7 @@ public interface ItemMapper {
 
   // 수정
   void update(ItemDTO dto);
+
+  // 목록 삭제
+  int deleteList(int[] deleteIdArr);
 }
