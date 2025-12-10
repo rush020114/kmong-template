@@ -104,4 +104,14 @@
             #{id}
         </foreach>
     </delete>
+
+    <!-- 이미지 목록 조회 -->
+    <select id="getAttachedImgNameList" resultType="String">
+        SELECT attached_img_name
+        FROM item_images
+        WHERE id IN
+        <foreach collection="deleteIdArr" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
 </mapper>

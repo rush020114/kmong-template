@@ -104,7 +104,19 @@ public class ItemService {
   }
   
   // 목록 삭제
+  @Transactional(rollbackFor = Exception.class)
   public int deleteList(int[] deleteIdArr){
-    return itemMapper.deleteList(deleteIdArr);
+    // 이미지 삭제 아이디 조회
+    List<String> attachedImgNameList = itemMapper.getAttachedImgNameList(deleteIdArr);
+
+    // 목록 삭제
+    int deleteCnt = itemMapper.deleteList(deleteIdArr);
+
+    // 이미지 삭제
+    if (attachedImgNameList != null && !attachedImgNameList.isEmpty()) {
+      fileUploadUtil.deleteFiles(attachedImgNameList, UploadPath.ITEM);
+    }
+
+    return deleteCnt;
   }
 }

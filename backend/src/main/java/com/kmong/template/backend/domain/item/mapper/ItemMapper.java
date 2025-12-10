@@ -31,4 +31,7 @@ public interface ItemMapper {
 
   // 목록 삭제
   int deleteList(int[] deleteIdArr);
+
+  // 이미지 목록 조회
+  List<String> getAttachedImgNameList(int[] deleteIdArr);
 }
