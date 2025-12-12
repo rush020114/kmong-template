@@ -33,17 +33,14 @@ public class GlobalExceptionHandler {
 
   // 유효성 검사 실패 처리
   @ExceptionHandler(MethodArgumentNotValidException.class)
-  public ResponseEntity<Map<String, String>> handleValidationException(
-          MethodArgumentNotValidException e
-  ) {
-    Map<String, String> errors = new HashMap<>();
-
-    e.getBindingResult().getFieldErrors().forEach(error ->
-            errors.put(error.getField(), error.getDefaultMessage())
-    );
-
-    return ResponseEntity.badRequest().body(errors);
+  public ResponseEntity<String> handleValidationException(MethodArgumentNotValidException e) {
+    String message = e.getBindingResult().getFieldErrors().stream()
+            .map(error -> error.getDefaultMessage())
+            .findFirst()
+            .orElse("잘못된 요청입니다.");
+    return ResponseEntity.badRequest().body(message);
   }
+
 
 }
 
