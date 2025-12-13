@@ -21,6 +21,5 @@ public class ItemDTO {
 
   private List<ItemImageDTO> imageList; // 상품 이미지 목록
 
-  @NotEmpty(message = "삭제할 목록을 선택해주세요.")
   private int[] deleteIdArr; // 상품 목록 삭제 아이디
 }
