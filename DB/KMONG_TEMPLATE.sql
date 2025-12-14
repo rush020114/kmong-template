@@ -19,3 +19,6 @@ select * from items;
 
 select * from item_images;
 
+SELECT datname, pg_get_userbyid(datdba) AS owner
+FROM pg_database
+WHERE datname = 'kmong_template';
